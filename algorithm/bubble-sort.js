@@ -1,11 +1,4 @@
-const randomGenerator = (len) => {
-	const arr = [];
-	for (let i = 0; i < len; ++i) {
-		let random = Math.random() * 1000;
-		arr.push(parseInt(random, 10));
-	}
-	return arr;
-}
+// 冒泡排序
 
 const bubbleSort = (arr) => {  
   for (let i = 0; i < arr.length - 1; ++i) {
