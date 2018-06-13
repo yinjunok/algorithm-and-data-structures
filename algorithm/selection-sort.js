@@ -20,5 +20,5 @@ const selectionSort = (arr) => {
   return resultArr;
 }
 
-let test = selectionSort(randomGenerator(10));
+let test = selectionSort(helper.random(10));
 console.log(test);

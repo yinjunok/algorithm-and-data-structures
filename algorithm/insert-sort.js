@@ -20,4 +20,4 @@ const insertSort = (arr) => {
   console.log(arr);
 }
 
-let test = insertSort(randomGenerator(10));
+let test = insertSort(helper.random(10));

@@ -13,4 +13,4 @@ const bubbleSort = (arr) => {
   return arr;
 }
 
-console.log(bubbleSort(randomGenerator(5)));
+console.log(bubbleSort(helper.random(5)));
