@@ -13,4 +13,6 @@ const helper = {
 	sort(len) {
 		return this.random(len).sort((a, b) => a - b);
 	}
-}
+};
+
+module.exports = helper;

@@ -1,5 +1,7 @@
 // 选择排序 每次从数组中选择出极值, 添加到结果数组中.
 
+const { random } = require('./helper');
+
 const selectionSort = (arr) => {
   let min, temp;
   let resultArr = [ ...arr ];
@@ -21,5 +23,5 @@ const selectionSort = (arr) => {
   return resultArr;
 }
 
-let test = selectionSort(helper.random(10));
+let test = selectionSort(random(10));
 console.log(test);

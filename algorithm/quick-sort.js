@@ -8,6 +8,8 @@
  *   2. 比基准数小的放左边, 大的放右边. 
 */
 
+const { random } = require('./helper');
+
 const quickSort = (arr) => {
   if (arr.length < 2) return arr;
 
@@ -26,4 +28,4 @@ const quickSort = (arr) => {
   return [...quickSort(left), base, ...quickSort(right)]
 };
 
-console.log(quickSort([1, 2, 34, 2, 100, 5, 3, 51, 2, 3]));
+console.log(quickSort(random(10)));

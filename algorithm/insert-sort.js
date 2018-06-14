@@ -3,6 +3,8 @@
  * 一次只摸一张牌, 每次摸牌的时候, 都会把牌按大小插入到相应位置.
 */
 
+const { random } = require('./helper');
+
 const insertSort = (arr) => {
   console.log(arr);
   for (let i = 1; i < arr.length; ++i) {
@@ -20,4 +22,4 @@ const insertSort = (arr) => {
   console.log(arr);
 }
 
-let test = insertSort(helper.random(10));
+let test = insertSort(random(5));
