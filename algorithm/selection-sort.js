@@ -23,5 +23,5 @@ const selectionSort = (arr) => {
   return resultArr;
 }
 
-let test = selectionSort(random(10));
+let test = selectionSort([7897897, 12, 23, 12, 42, 342, 786879078, 34, 234, 12, 234234, 234, 234, 1323]);
 console.log(test);
