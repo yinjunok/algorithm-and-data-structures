@@ -1,3 +1,5 @@
+const { random } = require('./helper');
+
 const merge = (left, right) => {
   const result = [];
   // 对两个数组排序, 然后合并
@@ -25,4 +27,8 @@ const mergeSort = (arr) => {
   );
 }
 
-console.log(mergeSort([1,23,23,12,41,41,24,124,2525,345,3,6,74,57,456]));
+console.time('start');
+mergeSort(random(100000));
+console.timeEnd('start');
+
+// console.log(mergeSort([1,23,23,12,41,41,24,124,2525,345,3,6,74,57,456]));
