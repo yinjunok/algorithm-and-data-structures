@@ -11,10 +11,30 @@
  * 右子叶编号为: 2n + 1.
 */
 
+const { random } = require('../algorithm/helper');
+
 class MaxHeap {
   constructor() {
     this._data = [];
     this._data[0] = null;
+  }
+
+  insert(ele) {
+    this._data.push(ele);
+    this._shiftUp(this._data.length - 1);
+  }
+
+  getItem() {
+    if (this._data.length < 2) {
+      return null;
+    }
+    const ele = this._data[1];
+    this._shiftDown();
+    return ele;
+  }
+
+  isEmpty() {
+    return this._data.length === 1;
   }
 
   _shiftUp(i) {
@@ -29,22 +49,35 @@ class MaxHeap {
     }
   }
 
-  insert(ele) {
-    this._data.push(ele);
-    this._shiftUp(this._data.length - 1);
+  _shiftDown() {
+    const { _data: data } = this;
+    data[1] = data.pop();
+    const len = data.length - 1;
+    let i = 1; 
+    let temp, j;
+
+    while (2*i <= len) {
+      j = 2 * i;
+      if (j + 1 <= len && data[j + 1] > data[j]) {
+        j += 1;
+      }
+
+      if (data[i] > data[j]) break;
+
+      temp = data[i];
+      data[i] = data[j];
+      data[j] = temp;
+      i = j;
+    }
   }
 }
 
 
 let heap = new MaxHeap();
 
-heap.insert(2);
-heap.insert(3);
-heap.insert(7);
-heap.insert(23);
-heap.insert(8);
-heap.insert(7);
-heap.insert(9);
-heap.insert(11);
-
-console.log(heap._data);
+let arr = random(30);
+arr.forEach(item => heap.insert(item));
+console.log(heap);
+for (let i = 0; i <= 30; ++i) {
+  console.log(heap.getItem());
+}
