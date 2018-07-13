@@ -55,11 +55,26 @@ class BST {
   _contain(node, key) {
     if (node === null) return false;
     if (key === node.key) return true;
-    
+
     if (key > node.key) {
       return this._contain(node.right, key);
     } else {
       return this._contain(node.left, key);
+    }
+  }
+
+  search(key) {
+    return this._search(this.root, key);
+  }
+
+  _search(node, key) {
+    if (node === null) return null;
+    if (node.key === key) return node.value;
+
+    if (node.key > key) {
+      return this._search(node.left, key);
+    } else {
+      return this._search(node.right, key);
     }
   }
 }
@@ -68,9 +83,9 @@ let demo = new BST(100, 100);
 demo.insert(50, 'fadf');
 demo.insert(200, 'afasdf');
 demo.insert(25, 'afasdf');
-demo.insert(75, 'afasdf');
+demo.insert(75, 75);
 demo.insert(150, 'afasdf');
 demo.insert(250, 'afasdf');
 demo.insert(2, 'afasdf');
 
-console.log(demo, demo.contain(2), demo.contain(3));
+console.log(demo, demo.contain(2), demo.contain(3), demo.search(75));
