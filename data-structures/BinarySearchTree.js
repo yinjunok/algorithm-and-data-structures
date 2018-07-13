@@ -47,6 +47,21 @@ class BST {
 
     return node;
   }
+
+  contain(key) {
+    return this._contain(this.root, key);
+  }
+
+  _contain(node, key) {
+    if (node === null) return false;
+    if (key === node.key) return true;
+    
+    if (key > node.key) {
+      return this._contain(node.right, key);
+    } else {
+      return this._contain(node.left, key);
+    }
+  }
 }
 
 let demo = new BST(100, 100);
@@ -58,4 +73,4 @@ demo.insert(150, 'afasdf');
 demo.insert(250, 'afasdf');
 demo.insert(2, 'afasdf');
 
-console.log(demo);
+console.log(demo, demo.contain(2), demo.contain(3));
