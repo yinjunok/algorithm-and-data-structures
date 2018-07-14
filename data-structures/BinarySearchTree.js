@@ -77,6 +77,42 @@ class BST {
       return this._search(node.right, key);
     }
   }
+
+  preOrder() {
+    this._preOrder(this.root);
+  }
+
+  _preOrder(node) {
+    if (node !== null) {
+      console.log(node.key);
+      this._preOrder(node.left);
+      this._preOrder(node.right);
+    }
+  }
+
+  inOrder() {
+    this._inOrder(this.root);
+  }
+
+  _inOrder(node) {
+    if (node !== null) {
+      this._inOrder(node.left);
+      console.log(node.key);
+      this._inOrder(node.right);
+    }
+  }
+
+  postOrder() {
+    this._postOrder(this.root);
+  }
+
+  _postOrder(node) {
+    if (node !== null) {
+      this._inOrder(node.left);
+      this._inOrder(node.right);
+      console.log(node.key);
+    }
+  }
 }
 
 let demo = new BST(100, 100);
@@ -89,3 +125,4 @@ demo.insert(250, 'afasdf');
 demo.insert(2, 'afasdf');
 
 console.log(demo, demo.contain(2), demo.contain(3), demo.search(75));
+console.log(demo.inOrder());
