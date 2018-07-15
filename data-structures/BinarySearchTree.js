@@ -134,6 +134,31 @@ class BST {
       }
     }
   }
+
+  // 查找最小值
+  mini() {
+    if (this.root === null) return null;
+
+    return this._mini(this.root);
+  }
+
+  _mini(node) {
+    if (node.left !== null) return this._mini(node.left);
+
+    return node.key;
+  }
+
+  max() {
+    if (this.root === null) return null;
+
+    return this._max(this.root);
+  }
+
+  _max(node) {
+    if (node.right !== null) return this._max(node.right);
+
+    return node.key;
+  }
 }
 
 let demo = new BST(100, 100);
@@ -148,3 +173,5 @@ demo.insert(2, 'afasdf');
 console.log(demo, demo.contain(2), demo.contain(3), demo.search(75));
 console.log(demo.inOrder());
 demo.levelOrder()
+console.log('最小值: ', demo.mini());
+console.log('最大值: ', demo.max())
