@@ -78,6 +78,7 @@ class BST {
     }
   }
 
+  // 前序遍历
   preOrder() {
     this._preOrder(this.root);
   }
@@ -90,6 +91,7 @@ class BST {
     }
   }
 
+  // 中序遍历
   inOrder() {
     this._inOrder(this.root);
   }
@@ -102,6 +104,7 @@ class BST {
     }
   }
 
+  // 后序遍历
   postOrder() {
     this._postOrder(this.root);
   }
@@ -111,6 +114,24 @@ class BST {
       this._inOrder(node.left);
       this._inOrder(node.right);
       console.log(node.key);
+    }
+  }
+
+  // 层序遍历， 广度优先
+  levelOrder() {
+    const queue = [];
+    queue.push(this.root);
+
+    while(queue.length !== 0) {
+      const node = queue.shift();
+      console.log(node.key);
+      if (node.left) {
+        queue.push(node.left);
+      }
+
+      if (node.right) {
+        queue.push(node.right);
+      }
     }
   }
 }
@@ -126,3 +147,4 @@ demo.insert(2, 'afasdf');
 
 console.log(demo, demo.contain(2), demo.contain(3), demo.search(75));
 console.log(demo.inOrder());
+demo.levelOrder()
