@@ -175,7 +175,6 @@ class BST {
 
   removeMin() {
     if (this.root !== null) {
-      console.log(this.root);
       this.root = this._removeMin(this.root);
     }
   }
@@ -189,6 +188,24 @@ class BST {
     } 
 
     node.left = this._removeMin(node.left);
+    return node;
+  }
+
+  removeMax() {
+    if (this.root !== null) {
+      this.root = this._removeMax(this.root);
+    }
+  }
+
+  _removeMax(node) {
+    if (node.right === null) {
+      console.log(node.key);
+      node = node.left;
+      this.count--;
+      return node;
+    }
+
+    node.right = this._removeMax(node.right);
     return node;
   }
 }
@@ -208,11 +225,13 @@ demo.levelOrder()
 console.log('最小值: ', demo.mini());
 console.log('最大值: ', demo.max());
 
-demo.removeMin();
+demo.removeMax();
+console.log(demo);
+demo.removeMax();
 console.log(demo);
 
-demo.removeMin();
-console.log(demo);
+// demo.removeMin();
+// console.log(demo);
 
-demo.removeMin();
-console.log(demo);
+// demo.removeMin();
+// console.log(demo);
