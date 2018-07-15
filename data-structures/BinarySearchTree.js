@@ -117,8 +117,14 @@ class BST {
     }
   }
 
-  // 层序遍历， 广度优先
+  /**
+   *  广度优先遍历。
+   *  可以用队列来实现，把同一层级的节点送入一个队列中，逐一取出。
+   *  如果有子节点，则推入队列当中，直至这个队列为空
+   */
   levelOrder() {
+    if (this.root === null) return null;
+    
     const queue = [];
     queue.push(this.root);
 
@@ -135,6 +141,12 @@ class BST {
     }
   }
 
+
+  /**
+   *  根据二分搜索树的特点， 如果一个节点没有左子树的时候， 这个节点保存的就是这棵树最小值，
+   *  没有右子树的时候， 这个节点保存的就是这棵树最大值
+  */
+
   // 查找最小值
   mini() {
     if (this.root === null) return null;
@@ -148,6 +160,7 @@ class BST {
     return node.key;
   }
 
+  // 查找最小值
   max() {
     if (this.root === null) return null;
 
@@ -158,6 +171,25 @@ class BST {
     if (node.right !== null) return this._max(node.right);
 
     return node.key;
+  }
+
+  removeMin() {
+    if (this.root !== null) {
+      console.log(this.root);
+      this.root = this._removeMin(this.root);
+    }
+  }
+
+  _removeMin(node) {
+    if (node.left === null) {
+      console.log(node.key);
+      node = node.right;
+      this.count--;
+      return node;
+    } 
+
+    node.left = this._removeMin(node.left);
+    return node;
   }
 }
 
@@ -174,4 +206,13 @@ console.log(demo, demo.contain(2), demo.contain(3), demo.search(75));
 console.log(demo.inOrder());
 demo.levelOrder()
 console.log('最小值: ', demo.mini());
-console.log('最大值: ', demo.max())
+console.log('最大值: ', demo.max());
+
+demo.removeMin();
+console.log(demo);
+
+demo.removeMin();
+console.log(demo);
+
+demo.removeMin();
+console.log(demo);
