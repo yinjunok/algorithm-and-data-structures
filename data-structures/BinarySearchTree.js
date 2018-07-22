@@ -208,6 +208,41 @@ class BST {
     node.right = this._removeMax(node.right);
     return node;
   }
+
+  removeItem(key) {
+    this.root = this._removeItem(this.root, key);
+  }
+
+  _removeItem(node, key) {
+    if (node === null) {
+      return null;
+    }
+
+    if (key < node.key) {
+      node.left = this._removeItem(node.left, key);
+    } else if (key > node.key) {
+      node.right = this._removeItem(node.right, key);
+    } else {
+      if (node.left === null) {
+        const right = node.right;
+        node = null;
+        this.count--;
+        return right;
+      }
+
+      if (node.right === null) {
+        const left = node.left;
+        node = null;
+        this.count--;
+        return left;
+      }
+
+      const tempNode = node;
+      const success = this._removeMin(node.right);
+      success.right = this._removeMin(node.right);
+      this.count++;
+    }
+  }
 }
 
 let demo = new BST(100, 100);
@@ -219,16 +254,16 @@ demo.insert(150, 'afasdf');
 demo.insert(250, 'afasdf');
 demo.insert(2, 'afasdf');
 
-console.log(demo, demo.contain(2), demo.contain(3), demo.search(75));
-console.log(demo.inOrder());
-demo.levelOrder()
-console.log('最小值: ', demo.mini());
-console.log('最大值: ', demo.max());
+// console.log(demo, demo.contain(2), demo.contain(3), demo.search(75));
+// console.log(demo.inOrder());
+// demo.levelOrder()
+// console.log('最小值: ', demo.mini());
+// console.log('最大值: ', demo.max());
 
-demo.removeMax();
-console.log(demo);
-demo.removeMax();
-console.log(demo);
+// demo.removeMax();
+// console.log(demo);
+// demo.removeMax();
+// console.log(demo);
 
 // demo.removeMin();
 // console.log(demo);
