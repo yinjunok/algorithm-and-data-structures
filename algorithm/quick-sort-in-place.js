@@ -11,10 +11,10 @@ function partition(arr, low, high) {
   const pivot = arr[low];
 
   while (low < high) {
-    while (low < high && pivot < arr[high]) high -= 1;
+    while (low < high && pivot <= arr[high]) high -= 1;
     arr[low] = arr[high];
 
-    while (low < high && pivot > arr[low]) low += 1;
+    while (low < high && pivot >= arr[low]) low += 1;
     arr[high] = arr[low];
   }
 
